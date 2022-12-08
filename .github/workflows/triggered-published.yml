@@ -9,9 +9,13 @@ jobs:
   show:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout tag
+      - name: Checkout
         uses: actions/checkout@v3
       - name: Show info
         run: |
           echo $GITHUB_REF
           echo $GITHUB_SHA
+      - name: Checkout tag
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
