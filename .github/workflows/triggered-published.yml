@@ -16,6 +16,7 @@ jobs:
           echo $GITHUB_REF
           echo $GITHUB_SHA
           echo $GITHUB_REF_NAME
+          echo ${{ github.ref.name }}
       - name: Checkout tag
         uses: actions/checkout@v3
         with:
