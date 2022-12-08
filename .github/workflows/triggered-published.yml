@@ -1,0 +1,17 @@
+name: Release publish triggered workflow
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  show:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout tag
+        uses: actions/checkout@v3
+      - name: Show info
+        run: |
+          echo $GITHUB_REF
+          echo GITHUB_SHA
