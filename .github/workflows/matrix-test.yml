@@ -23,6 +23,7 @@ jobs:
     name: Check status
     runs-on: ubuntu-latest
     needs: matrix-test
+    if: ${{ always() }}
     steps:
       - name: Check status
         run: echo ${{ job.status }}
