@@ -8,8 +8,21 @@ jobs:
     name: Matrixのテスト
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
           environment: [test, staging, production]
     steps:
       - name: Matrixのテスト
-        run: echo ${{ matrix.environment }}
+        run: |
+          if [ ${{ matrix.environment }} != 'staging' ]; then
+            echo "success"
+          else
+            exit 1
+          fi
+  check-status:
+    name: Check status
+    runs-on: ubuntu-latest
+    needs: matrix-test
+    steps:
+      - name: Check status
+        run: echo ${{ job.status }}
