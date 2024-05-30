@@ -26,4 +26,4 @@ jobs:
     if: ${{ always() }}
     steps:
       - name: Check status
-        run: echo "ステータス => ${{ job.status }}
+        run: echo "ステータス => ${{ job.status }}"
