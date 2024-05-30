@@ -26,4 +26,6 @@ jobs:
     if: ${{ always() }}
     steps:
       - name: Check status
-        run: echo "ステータス => ${{ github.run_id }}"
+        run: |
+          result=`gh run view ${{ github.run_id }}`
+          echo $result
