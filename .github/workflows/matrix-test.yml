@@ -26,6 +26,8 @@ jobs:
     if: ${{ always() }}
     steps:
       - name: Check status
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           result=`gh run view ${{ github.run_id }}`
           echo $result
