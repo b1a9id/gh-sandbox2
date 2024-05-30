@@ -25,8 +25,12 @@ jobs:
     needs: matrix-test
     if: ${{ always() }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Check status
         env:
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           result=`gh run view ${{ github.run_id }}`
